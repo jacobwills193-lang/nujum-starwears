@@ -1,89 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NUJUM STARWEARS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUJUM ★ STARWEARS - Kampala</title>
 <style>
-body{background:#111;color:#fff;font-family:Arial;margin:0}
-header{background:#000;padding:15px;text-align:center;position:sticky;top:0;z-index:10}
-header h1{color:#FFD700;margin:0;font-size:22px}
-header p{margin:2px;color:#ccc;font-size:12px}
-.cartbtn{background:#FFD700;color:#000;padding:10px 18px;border-radius:20px;font-weight:bold;border:0;margin-top:8px}
-.grid{padding:12px}
-.card{background:#1e1e1e;border-radius:15px;overflow:hidden;margin-bottom:18px}
-.card img{width:100%;height:300px;object-fit:cover;background:#fff}
-.card-in{padding:14px}
-.price{color:#FFD700;font-size:22px;font-weight:bold}
-select,input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:0}
-button.add{background:#FFD700;color:#000;width:100%;padding:12px;border:0;border-radius:10px;font-weight:bold;font-size:16px}
-#cartBox{position:fixed;bottom:0;left:0;right:0;background:#fff;color:#000;padding:15px;border-radius:20px 20px 0 0;display:none;max-height:70%;overflow:auto}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f0f0f;color:#fff}
+header{text-align:center;padding:20px 15px;background:#000;border-bottom:3px solid #d4af37}
+header img{width:100%;max-width:480px;border-radius:20px;border:2px solid #d4af37}
+header h1{color:#d4af37;font-size:28px;margin-top:10px;letter-spacing:1px}
+header p{color:#ccc;font-size:14px;margin-top:5px}
+.cart-bar{position:sticky;top:0;background:#d4af37;color:#000;padding:12px;text-align:center;font-weight:bold;z-index:10}
+.cart-bar button{background:#000;color:#d4af37;border:none;padding:8px 18px;border-radius:20px;font-weight:bold;margin-left:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
+.card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:15px;text-align:center}
+.card .emoji{font-size:55px}
+.card h3{font-size:15px;margin:10px 0 4px}
+.card p{color:#aaa;font-size:12px}
+.price{color:#d4af37;font-size:18px;font-weight:bold;margin:8px 0}
+.card button{background:#d4af37;color:#000;border:none;padding:10px;width:100%;border-radius:10px;font-weight:bold}
+.badge{background:#ff2d55;color:#fff;font-size:11px;padding:3px 8px;border-radius:10px}
+footer{text-align:center;padding:20px;color:#aaa;font-size:13px}
+.wa{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:14px 18px;border-radius:50px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(0,0,0,.5)}
+#cartBox{display:none;background:#fff;color:#000;margin:15px;border-radius:16px;padding:15px}
+#cartBox h2{font-size:18px}
+#cartItems{margin:10px 0}
+.orderBtn{background:#25D366;color:#fff;border:none;padding:12px;width:100%;border-radius:10px;font-weight:bold;font-size:16px}
 </style>
 </head>
 <body>
 <header>
+<img src="logo.jpg" alt="NUJUM WEARS Logo">
 <h1>NUJUM ★ STARWEARS</h1>
-<p>Kampala | Delivery All Over Uganda | WhatsApp 0732318282</p>
-<button class="cartbtn" onclick="showCart()">🛒 Cart (<span id="count">0</span>) - View & Order</button>
+<p>Kampala | Delivery All Over Uganda | WhatsApp 0732319282</p>
 </header>
-<div class="grid">
 
-<div class="card">
-<img src="https://media.karousell.com/media/photos/products/2026/1/7/black_hoodie_new_1767796786_f5af65af.jpg" alt="Black Hoodie">
-<div class="card-in"><h3>Hoodie - Black</h3><div class="price">48,000 UGX</div>
-<select id="s1"><option>S</option><option>M</option><option selected>L</option><option>XL</option><option>XXL</option></select>
-<button class="add" onclick="add('Hoodie Black',48000,document.getElementById('s1').value)">Add to Cart +</button></div></div>
+<div class="cart-bar">Cart (<span id="count">0</span>) <button onclick="toggleCart()">View & Order</button></div>
 
-<div class="card">
-<img src="https://img.alicdn.com/bao/uploaded/i1/2480921588/O1CN014GjFnX1NbLsNv4raR_!!2480921588.jpg" alt="Green Hoodie">
-<div class="card-in"><h3>Hoodie - Green</h3><div class="price">65,000 UGX</div>
-<select id="s2"><option>S</option><option>M</option><option selected>L</option><option>XL</option><option>XXL</option></select>
-<button class="add" onclick="add('Hoodie Green',65000,document.getElementById('s2').value)">Add to Cart +</button></div></div>
-
-<div class="card">
-<img src="https://www.fashionworld.co.uk/i/595203634358973c/original/c02yj572951w.jpg?impolicy=plp&im=Resize=1200" alt="Knickers">
-<div class="card-in"><h3>Knickers - Pack of 3</h3><div class="price">12,000 UGX</div>
-<select id="s3"><option>S</option><option selected>M</option><option>L</option><option>XL</option></select>
-<button class="add" onclick="add('Knickers Pack of 3',12000,document.getElementById('s3').value)">Add to Cart +</button></div></div>
-
-<div class="card">
-<img src="https://down-ph.img.susercontent.com/file/ph-11134207-7qukz-li1p5s1n42rtbf" alt="Bra">
-<div class="card-in"><h3>Bra - Comfortable</h3><div class="price">12,000 UGX</div>
-<select id="s4"><option>34B</option><option selected>36B</option><option>38B</option><option>40C</option></select>
-<select id="c4"><option>Black</option><option>White</option><option>Beige</option><option>Pink</option></select>
-<button class="add" onclick="add('Bra',12000,document.getElementById('s4').value+' / '+document.getElementById('c4').value)">Add to Cart +</button></div></div>
-
-<div class="card">
-<img src="https://media.vg7.org/public/pipromotion/glide_cache/cb0b5f72-9d8f-4a96-ae2d-f382467cf37e/560105009LOLLIPOP08M_667051101e538.jpg/282f38b99fcb7d2cc605a88d985d79ec" alt="Kids Umbrella">
-<div class="card-in"><h3>Kids Umbrella - Colourful</h3><div class="price">12,000 UGX</div>
-<select id="c5"><option>Pink</option><option>Blue</option><option>Rainbow</option></select>
-<button class="add" onclick="add('Kids Umbrella',12000,document.getElementById('c5').value)">Add to Cart +</button></div></div>
-
-<div class="card">
-<img src="https://i8secure14-805356.c.cdn77.org/pickles/Prod_Collection_File/1464b922-9fb5-48a7-b7dd-fdea9cf95d9b/raincoat_yellow2.jpg" alt="Raincoat">
-<div class="card-in"><h3>Raincoat - Waterproof</h3><div class="price">28,000 UGX</div>
-<select id="s6"><option>M</option><option selected>L</option><option>XL</option><option>XXL</option></select>
-<button class="add" onclick="add('Raincoat',28000,document.getElementById('s6').value)">Add to Cart +</button></div></div>
-
-<div class="card">
-<img src="https://cdn.wasserman.eu/generated/images/s960/2174009/halka-anabel-powder-pink-size-xl-42" alt="Night Gown">
-<div class="card-in"><h3>Night Gown - Satin Soft</h3><div class="price">30,000 UGX</div>
-<select id="s7"><option selected>M</option><option>L</option><option>XL</option></select>
-<button class="add" onclick="add('Night Gown',30000,document.getElementById('s7').value)">Add to Cart +</button></div></div>
-
-</div>
 <div id="cartBox">
-<h3>Your Cart</h3><div id="items"></div>
+<h2>Your Cart</h2>
+<div id="cartItems">Cart is empty</div>
 <p><b>Total: <span id="total">0</span> UGX</b></p>
-<input id="name" placeholder="Your Name">
-<input id="phone" placeholder="Your Phone / Location">
-<button class="add" onclick="order()">Order on WhatsApp</button>
-<button onclick="document.getElementById('cartBox').style.display='none'" style="width:100%;padding:10px;margin-top:8px">Close</button>
+<button class="orderBtn" onclick="orderWhatsApp()">Order via WhatsApp ✅</button>
 </div>
+
+<div class="grid">
+<div class="card"><div class="emoji">🩲</div><h3>Knickers - Pack of 3</h3><p>Comfortable • All sizes</p><div class="price">12,000 UGX</div><button onclick="add('Knickers Pack of 3',12000)">Add to Cart +</button></div>
+<div class="card"><div class="emoji">👙</div><h3>Bra - Comfortable</h3><p>Soft • All sizes</p><div class="price">25,000 UGX</div><button onclick="add('Bra',25000)">Add to Cart +</button></div>
+<div class="card"><div class="emoji">🩳</div><h3>Boxers - Single</h3><p>Quality cotton • M/L/XL</p><div class="price">11,000 UGX</div><button onclick="add('Boxers Single',11000)">Add to Cart +</button></div>
+<div class="card"><div class="emoji">🎽</div><h3>Vest - Single</h3><p>White / Black • All sizes</p><div class="price">20,000 UGX</div><button onclick="add('Vest',20000)">Add to Cart +</button></div>
+<div class="card"><div class="emoji">📦🩳</div><h3>Pack - Boxers Pack of 3</h3><p><span class="badge">SAVE 3,000</span> Best Seller!</p><div class="price">30,000 UGX</div><button onclick="add('Boxers Pack of 3',30000)">Add to Cart +</button></div>
+<div class="card"><div class="emoji">📦🩲</div><h3>Pack - Knickers Pack of 5</h3><p><span class="badge">BEST VALUE</span> 5 pcs</p><div class="price">20,000 UGX</div><button onclick="add('Knickers Pack of 5',20000)">Add to Cart +</button></div>
+</div>
+
+<footer>NUJUM STARWEARS © 2026 • Kampala, Uganda<br>Pay: MTN MoMo / Airtel Money • Delivery 5k-10k<br>WhatsApp: 0732319282</footer>
+<a class="wa" href="https://wa.me/256732319282">💬 WhatsApp</a>
 <script>
 let cart=[];
-function add(n,p,v){cart.push({n,p,v});document.getElementById('count').innerText=cart.length;alert(n+' added!')}
-function showCart(){let h='';let t=0;cart.forEach((c,i)=>{h+=c.n+' - '+c.v+' - '+c.p+' UGX<br>';t+=c.p});document.getElementById('items').innerHTML=h||'Cart empty';document.getElementById('total').innerText=t;document.getElementById('cartBox').style.display='block'}
-function order(){let t=0;let m='Hello NUJUM STARWEARS, I want to order:%0A';cart.forEach(c=>{m+=c.n+' - '+c.v+' - '+c.p+' UGX%0A';t+=c.p});m+='Total: '+t+' UGX%0AName: '+document.getElementById('name').value+'%0APhone/Location: '+document.getElementById('phone').value;window.open('https://wa.me/256732318282?text='+m)}
+function add(name,price){cart.push({name,price});document.getElementById('count').innerText=cart.length;alert(name+' added!');updateCart();}
+function updateCart(){let h='';let t=0;cart.forEach((i,idx)=>{h+=i.name+' - '+i.price+' UGX <button onclick="removeItem('+idx+')">x</button><br>';t+=i.price;});if(cart.length==0)h='Cart is empty';document.getElementById('cartItems').innerHTML=h;document.getElementById('total').innerText=t;}
+function removeItem(i){cart.splice(i,1);document.getElementById('count').innerText=cart.length;updateCart();}
+function toggleCart(){let b=document.getElementById('cartBox');b.style.display=b.style.display=='block'?'none':'block';}
+function orderWhatsApp(){if(cart.length==0){alert('Cart empty');return;}let msg='Hello NUJUM STARWEARS! I want to order:%0A';let t=0;cart.forEach(i=>{msg+='- '+i.name+' - '+i.price+' UGX%0A';t+=i.price;});msg+='Total: '+t+' UGX';window.open('https://wa.me/256732319282?text='+msg,'_blank');}
 </script>
 </body>
 </html>
