@@ -41,7 +41,7 @@ footer{text-align:center;padding:20px;color:#aaa;font-size:13px}
 <button class="orderBtn" onclick="orderWhatsApp()">Order via WhatsApp ✅</button>
 </div>
 <div class="grid">
-<div class="card"><img src="knickers.jpg"><h3>Knickers - Pack of 3</h3><p>Comfortable • All sizes</p><div class="price">12,000 UGX</div><button onclick="add('Knickers Pack of 3',12000)">Add to Cart +</button></div>
+<div class="card"><img src="knickers.jpg"><h3>Knickers - Pack of 3</h3><p>Comfortable • All sizes</p><div class="price">12,000 UGX</div><button onclick="add('Knickers Pack of 3',32000)">Add to Cart +</button></div>
 <div class="card"><img src="bra.jpg"><h3>Bra - Comfortable</h3><p>Soft • All sizes</p><div class="price">25,000 UGX</div><button onclick="add('Bra',15000)">Add to Cart +</button></div>
 <div class="card"><img src="boxer.jpg"><h3>Boxers - Single</h3><p>Quality cotton • M/L/XL</p><div class="price">11,000 UGX</div><button onclick="add('Boxers Single',11000)">Add to Cart +</button></div>
 <div class="card"><img src="vest.jpg"><h3>Vest - Single</h3><p>White / Black • All sizes</p><div class="price">20,000 UGX</div><button onclick="add('Vest',25000)">Add to Cart +</button></div>
@@ -57,7 +57,7 @@ function add(name,price){cart.push({name,price});document.getElementById('count'
 function updateCart(){let h='';let t=0;cart.forEach((i,idx)=>{h+=i.name+' - '+i.price+' UGX <button onclick="removeItem('+idx+')">x</button><br>';t+=i.price;});if(cart.length==0)h='Cart is empty';document.getElementById('cartItems').innerHTML=h;document.getElementById('total').innerText=t;}
 function removeItem(i){cart.splice(i,1);document.getElementById('count').innerText=cart.length;updateCart();}
 function toggleCart(){let b=document.getElementById('cartBox');b.style.display=b.style.display=='block'?'none':'block';}
-function orderWhatsApp(){if(cart.length==0){alert('Cart empty');return;}let msg='Hello NUJUM STARWEARS! I want to order:%0A';let t=0;cart.forEach(i=>{msg+='- '+i.name+' - '+i.price+' UGX%0A';t+=i.price;});msg+='Total: '+t+' UGX';window.open('https://wa.me/256732328282?text='+msg,'_blank');}
+function orderWhatsApp(){if(cart.length==0){alert('Cart empty');return;}let msg='Hello NUJUM STARWEARS! I want to order:%0A';let t=0;cart.forEach(i=>{msg+='- '+i.name+' - '+i.price+' UGX%0A';t+=i.price;});msg+='Total: '+t+' UGX';window.open('https://wa.me/256732318282?text='+msg,'_blank');}
 </script>
 </body>
 </html>
